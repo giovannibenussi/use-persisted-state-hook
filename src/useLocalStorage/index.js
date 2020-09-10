@@ -3,7 +3,7 @@ import hash from 'object-hash'
 
 const PREFIX = '__use_local_storage_state_hook'
 
-const getValue = (key, fallback) => {
+const getItem = (key, fallback) => {
   try {
     const value = localStorage.getItem(key)
     if (value) {
@@ -16,25 +16,25 @@ const getValue = (key, fallback) => {
   return fallback
 }
 
-const setValue = (key, value) => {
+const setItem = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
 const useLocalStorageState = (keyName, initialValue) => {
-  const prefix = `${PREFIX}__${keyName}_`
-  const key = `${prefix}_value`
-  const storedInitialValueKey = `${prefix}_initial_value_hash`
-  const [state, setState] = useState(getValue(key, initialValue))
+  const prefix = `${PREFIX}`
+  const key = `${prefix}__value__${keyName}`
+  const storedInitialValueKey = `${prefix}__initial_value_hash__${keyName}`
+  const [state, setState] = useState(getItem(key, initialValue))
 
   useEffect(() => {
     setState(initialValue)
     if (initialValue !== undefined) {
-      setValue(storedInitialValueKey, hash(initialValue))
+      setItem(storedInitialValueKey, hash(initialValue))
     }
   }, [storedInitialValueKey, initialValue])
 
   useEffect(() => {
-    setValue(key, state)
+    setItem(key, state)
   }, [key, state])
 
   return [state, setState]
