@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-  <img src="./usePersistedState.svg"> 
+  <img src="https://raw.githubusercontent.com/giovannibenussi/use-persisted-state/master/usePersistedState.svg">
 </p>
 
 **Lightweight, resilient persisted useState.**
