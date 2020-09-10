@@ -2,11 +2,13 @@
   "name": "use-local-storage-state-hook",
   "version": "0.0.1",
   "description": "useLocalStorageState hook",
+  "source": "src/index.js",
   "main": "dist/index.js",
   "author": "Giovanni Benussi <giovanni.benussi@usach.cl>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "test": "jest"
   },
   "jest": {
@@ -21,10 +23,9 @@
     "eslint-plugin-react": "^7.20.6",
     "jest": "^26.4.2",
     "jest-localstorage-mock": "^2.4.3",
+    "microbundle": "^0.12.3",
     "react": "^16.9.0",
-    "react-test-renderer": "^16.9.0",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "react-test-renderer": "^16.9.0"
   },
   "peerDependencies": {
     "react": "<=16.8.0"
