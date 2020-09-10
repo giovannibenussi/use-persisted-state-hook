@@ -7,10 +7,12 @@ beforeEach(() => {
 })
 
 const setItemImperatively = (key, value) => {
-  localStorage.setItem(
-    `__use_local_storage_state_hook__${key}__initial_value_hash`,
-    hash(value)
-  )
+  if (value !== undefined) {
+    localStorage.setItem(
+      `__use_local_storage_state_hook__${key}__initial_value_hash`,
+      hash(value)
+    )
+  }
   localStorage.setItem(
     `__use_local_storage_state_hook__${key}__value`,
     JSON.stringify(value)
@@ -195,17 +197,17 @@ test('accepts floats', () => {
   )
 })
 
-//test("accepts undefined", () => {
-//const { result } = renderHook(() => useLocalStorageState("key", undefined));
+test('accepts undefined', () => {
+  const { result } = renderHook(() => useLocalStorageState('key', undefined))
 
-//const [value] = result.current;
+  const [value] = result.current
 
-//expect(value).toBe(undefined);
-//expect(localStorage.setItem).toHaveBeenLastCalledWith(
-//expect.anything(),
-//JSON.stringify(undefined)
-//);
-//});
+  expect(value).toBe(undefined)
+  expect(localStorage.setItem).toHaveBeenLastCalledWith(
+    expect.anything(),
+    JSON.stringify(undefined)
+  )
+})
 
 test('accepts arrays with different types of data', () => {
   const { result } = renderHook(() =>
@@ -231,12 +233,94 @@ test('it loads integers from previously saved data', () => {
 })
 
 test('it loads arrays from previously saved data', () => {
-  setItemImperatively('key', [123, 'string', { name: 'giovanni' }])
+  setItemImperatively('key', [456, 'string', { name: 'giovanni' }])
   const { result } = renderHook(() =>
-    useLocalStorageState('key', [123, 'string', { name: 'giovanni' }])
+    useLocalStorageState('key', [456, 'string', { name: 'giovanni' }])
   )
 
   const [value] = result.current
 
-  expect(value).toMatchObject([123, 'string', { name: 'giovanni' }])
+  expect(value).toMatchObject([456, 'string', { name: 'giovanni' }])
+})
+
+test('it does not load null from previously saved data', () => {
+  setItemImperatively('key', null)
+  const { result } = renderHook(() => useLocalStorageState('key', 123))
+
+  const [value] = result.current
+
+  expect(value).toBe(123)
+})
+
+test('works without an initial value', () => {
+  const { result } = renderHook(() => useLocalStorageState('key'))
+
+  const [value] = result.current
+
+  expect(value).toBe(undefined)
+})
+
+const setItemCalls = () => localStorage.setItem.mock.calls.length
+const getItemCalls = () => localStorage.getItem.mock.calls.length
+
+test('it calls to localStorage.setItem two times if it runs once', () => {
+  const initialCalls = setItemCalls()
+  renderHook(() => useLocalStorageState('key', 'value'))
+
+  const difference = setItemCalls() - initialCalls
+
+  expect(difference).toBe(2)
+})
+
+test('it calls to localStorage.setItem one time after call update state', () => {
+  const { result } = renderHook(() => useLocalStorageState('key', 'value'))
+  const initialCalls = setItemCalls()
+
+  act(() => {
+    const [, setValue] = result.current
+    setValue('newValue')
+  })
+
+  const difference = setItemCalls() - initialCalls
+
+  expect(difference).toBe(1)
+})
+
+test('it does not call setItem if call update state with the same value', () => {
+  const { result } = renderHook(() => useLocalStorageState('key', 'value'))
+  const initialCalls = setItemCalls()
+
+  act(() => {
+    const [, setValue] = result.current
+    setValue('value')
+  })
+
+  const difference = setItemCalls() - initialCalls
+
+  expect(difference).toBe(0)
+})
+
+test('it calls to localStorage.setItem two times after update the initial value', () => {
+  let initialValue = 'value'
+  const { rerender, result } = renderHook(() =>
+    useLocalStorageState('key', initialValue)
+  )
+
+  const initialCalls = setItemCalls()
+  initialValue = 'newValue'
+  rerender()
+  const difference = setItemCalls() - initialCalls
+
+  expect(difference).toBe(2)
+})
+
+test('allows to update state with a function', () => {
+  const { result } = renderHook(() => useLocalStorageState('count', 0))
+
+  act(() => {
+    const [, setValue] = result.current
+    setValue(c => c + 1)
+  })
+
+  expect(result.current[0]).toBe(1)
 })

@@ -10,7 +10,7 @@ const getItem = (key, fallback) => {
       return JSON.parse(value)
     }
   } catch (error) {
-    console.error('useLocalStorageState: ', error)
+    console.error('error in useLocalStorageState: ', error)
   }
 
   return fallback
