@@ -24,7 +24,7 @@ const useLocalStorageState = (keyName, initialValue) => {
   const prefix = `${PREFIX}`
   const key = `${prefix}__value__${keyName}`
   const storedInitialValueKey = `${prefix}__initial_value_hash__${keyName}`
-  const [state, setState] = useState(getItem(key, initialValue))
+  const [state, setState] = useState(() => getItem(key, initialValue))
 
   useEffect(() => {
     setState(initialValue)

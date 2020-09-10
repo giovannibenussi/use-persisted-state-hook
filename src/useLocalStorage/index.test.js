@@ -324,3 +324,16 @@ test('allows to update state with a function', () => {
 
   expect(result.current[0]).toBe(1)
 })
+
+test('calls localStorage.getItem once to retrieve the initial value even if it rerenders', () => {
+  const initialCalls = getItemCalls()
+  const { rerender } = renderHook(() => useLocalStorageState('key', 'value'))
+
+  rerender()
+  rerender()
+  rerender()
+
+  const difference = getItemCalls() - initialCalls
+
+  expect(difference).toBe(1)
+})
