@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="480px" height="224px" viewBox="0 0 480 224" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>usePersistedState</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="usePersistedState" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <text font-family="Helvetica-Bold, Helvetica" font-size="48" font-weight="bold" fill="#667EEA">
+            <tspan x="31.8984375" y="197">usePersistedState</tspan>
+        </text>
+        <g id="image(1)" transform="translate(176.000000, 21.000000)">
+            <circle id="Oval" fill="#667EEA" cx="64" cy="64" r="64"></circle>
+            <path d="M24,39 L24,89 C24,100.05 41.91,109 64,109 C86.09,109 104,100.05 104,89 L104,39 M24,39 C24,50.05 41.91,59 64,59 C86.09,59 104,50.05 104,39 M24,39 C24,27.95 41.91,19 64,19 C86.09,19 104,27.95 104,39 M104,64 C104,75.05 86.09,84 64,84 C41.91,84 24,75.05 24,64" id="Shape" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

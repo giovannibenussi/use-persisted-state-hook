@@ -1,4 +1,6 @@
-Lightweight, resilient persisted useState.
+![Optional Text](./usePersistedState.svg)
+
+**Lightweight, resilient persisted useState.**
 
 Features:
 
@@ -6,6 +8,5 @@ Features:
 - ⚛️ Automatically handle state's shape updates.
 - 🔄Handle stale states when initial state changes.
 - ✅Similar interface to React's official useState hook.
-
 
 # Examples
