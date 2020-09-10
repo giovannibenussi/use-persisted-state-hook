@@ -1,4 +1,6 @@
-![Optional Text](./usePersistedState.svg)
+<p align="center" width="100%">
+  <img src="./usePersistedState.svg"> 
+</p>
 
 **Lightweight, resilient persisted useState.**
 
