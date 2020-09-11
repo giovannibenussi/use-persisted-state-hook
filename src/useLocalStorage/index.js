@@ -21,20 +21,20 @@ const setItem = (key, value) => {
 }
 
 const useLocalStorageState = (keyName, initialValue) => {
-  const key = `${PREFIX}__value__${keyName}`
-  const [state, setState] = useState(() => getItem(key, initialValue))
+  const valueKey = `${PREFIX}__value__${keyName}`
+  const [state, setState] = useState(() => getItem(valueKey, initialValue))
 
   useEffect(() => {
     setState(initialValue)
-    if (initialValue !== undefined) {
-      const storedInitialValueKey = `${PREFIX}__initial_value_hash__${keyName}`
-      setItem(storedInitialValueKey, hash(initialValue))
-    }
+    setItem(
+      `${PREFIX}__initial_value_hash__${keyName}`,
+      initialValue === undefined ? undefined : hash(initialValue)
+    )
   }, [initialValue])
 
   useEffect(() => {
-    setItem(key, state)
-  }, [key, state])
+    setItem(valueKey, state)
+  }, [valueKey, state])
 
   return [state, setState]
 }
