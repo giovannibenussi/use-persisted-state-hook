@@ -12,7 +12,9 @@
     "test": "jest"
   },
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"]
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -22,6 +24,7 @@
     "@testing-library/react-hooks": "^3.4.1",
     "eslint": "^7.8.1",
     "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.1",
     "jest": "^26.4.2",
     "jest-localstorage-mock": "^2.4.3",
     "microbundle": "^0.12.3",
@@ -39,16 +42,26 @@
       "browser": true,
       "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended"
+    ],
     "parser": "@babel/eslint-parser",
-    "plugins": ["@babel/plugin-syntax-jsx"],
     "overrides": [
       {
-        "files": ["**/*.test.js"],
+        "files": [
+          "**/*.test.js"
+        ],
         "env": {
           "jest": true
         }
       }
-    ]
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   }
 }
