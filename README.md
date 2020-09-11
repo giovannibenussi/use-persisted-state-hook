@@ -10,6 +10,7 @@ Features:
 - ⚛️ Automatically handle state's shape updates.
 - 🔄 Handle stale states when initial state changes.
 - ✅ Similar interface to React's official useState hook.
+- ✨ Server Side Render Support.
 
 # Examples
 
