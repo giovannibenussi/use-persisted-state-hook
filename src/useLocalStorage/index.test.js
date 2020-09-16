@@ -143,6 +143,21 @@ test('updates the value in localStorage if the initial state shape changes', () 
   )
 })
 
+//test('updates the value in localStorage if the initial state changes from a function to another function', () => {
+  //let initialValue = { name: 'giovanni' }
+  //const { rerender } = renderHook(() =>
+    //useLocalStorageState('key', () => 'value')
+  //)
+
+  //initialValue = () => ('newValue')
+  //rerender()
+
+  //expect(localStorage.setItem).toHaveBeenLastCalledWith(
+    //expect.anything(),
+    //JSON.stringify('newValue')
+  //)
+//})
+
 test('when the initial value is a function it returns its value the first time is called', () => {
   const { result } = renderHook(() =>
     useLocalStorageState('key', () => 'value')
@@ -263,14 +278,13 @@ test('works without an initial value', () => {
 const setItemCalls = () => localStorage.setItem.mock.calls.length
 const getItemCalls = () => localStorage.getItem.mock.calls.length
 
-// TODO: Ideally it should call localStorage.setItem only two times
-test('it calls to localStorage.setItem three times if it runs once', () => {
+test('it calls to localStorage.setItem two times if it runs once', () => {
   const initialCalls = setItemCalls()
   renderHook(() => useLocalStorageState('key', 'value'))
 
   const difference = setItemCalls() - initialCalls
 
-  expect(difference).toBe(3)
+  expect(difference).toBe(2)
 })
 
 test('it calls to localStorage.setItem one time after call update state', () => {
@@ -301,7 +315,7 @@ test('it does not call setItem if call update state with the same value', () => 
   expect(difference).toBe(0)
 })
 
-test('calls to localStorage.setItem twice after update the initial value', () => {
+test('calls to localStorage.setItem three times after update the initial value', () => {
   let initialValue = 'value'
   const { rerender } = renderHook(() =>
     useLocalStorageState('key', initialValue)
@@ -312,7 +326,7 @@ test('calls to localStorage.setItem twice after update the initial value', () =>
   rerender()
   const difference = setItemCalls() - initialCalls
 
-  expect(difference).toBe(2)
+  expect(difference).toBe(3)
 })
 
 test('allows to update state with a function', () => {
