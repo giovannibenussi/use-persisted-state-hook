@@ -14,9 +14,11 @@ Features:
 
 # Examples
 
+## Simple Example
+
 ```jsx
 import React from 'react'
-import usePersistedState from 'use-persisted-state'
+import usePersistedState from 'use-persisted-state-hook'
 
 function Counter() {
   const [count, setCount] = usePersistedState('count', 0)
@@ -31,4 +33,48 @@ function Counter() {
 }
 
 export default Counter
+```
+
+## Elaborated Example
+
+<p align="center" width="100%">
+  <img src="https://raw.githubusercontent.com/giovannibenussi/use-persisted-state/master/ui-example.png">
+</p>
+
+```jsx
+import React from 'react'
+import usePersistedState from 'use-persisted-state-hook'
+
+function Settings() {
+  const [options, setOptions] = usePersistedState('options', [
+    { title: 'Dark Mode', name: 'dark_mode', enabled: true },
+    { title: 'Data Saving 2', name: 'data_saving', enabled: true },
+  ])
+
+  const onClick = (e) => {
+    setOptions(
+      options.map((option) =>
+        option.name === e.target.name
+          ? { ...option, enabled: !option.enabled }
+          : option
+      )
+    )
+  }
+
+  return (
+    <div>
+      {options.map((option) => (
+        <label>
+          <input
+            type="checkbox"
+            name={option.name}
+            checked={option.enabled}
+            onClick={onClick}
+          />{' '}
+          {option.title}
+        </label>
+      ))}
+    </div>
+  )
+}
 ```
