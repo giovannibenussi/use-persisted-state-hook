@@ -38,7 +38,7 @@ export default Counter
 ## Elaborated Example
 
 <p align="center" width="100%">
-  <img src="https://raw.githubusercontent.com/giovannibenussi/use-persisted-state/master/ui-example.png">
+  <img src="https://raw.githubusercontent.com/giovannibenussi/use-persisted-state-hook/master/ui-example.png">
 </p>
 
 ```jsx
