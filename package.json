@@ -1,7 +1,7 @@
 {
   "name": "use-persisted-state-hook",
   "version": "1.0.0",
-  "description": "useLocalStorageState hook",
+  "description": "Resilient state that persist across browser's sessions 📦",
   "source": "src/index.js",
   "main": "dist/index.js",
   "author": "Giovanni Benussi <giovanni.benussi@usach.cl>",
@@ -12,9 +12,7 @@
     "test": "jest"
   },
   "jest": {
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ]
+    "setupFiles": ["jest-localstorage-mock"]
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -50,9 +48,7 @@
     "parser": "@babel/eslint-parser",
     "overrides": [
       {
-        "files": [
-          "**/*.test.js"
-        ],
+        "files": ["**/*.test.js"],
         "env": {
           "jest": true
         }
