@@ -41,12 +41,12 @@ const useLocalStorageState = (keyName, initialValue) => {
     if (hasSetState) {
       setItem(valueKey, state)
     } else {
-      setState(() =>
-        getItem(valueKey) || initialValue instanceof Function
-          ? initialValue()
-          : initialValue
-      ),
-        setHasSetState(true)
+      setState(
+        () =>
+          getItem(valueKey) ||
+          (initialValue instanceof Function ? initialValue() : initialValue)
+      )
+      setHasSetState(true)
     }
   }, [keyName, hasSetState, initialValue, state])
 
