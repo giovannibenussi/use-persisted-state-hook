@@ -12,7 +12,21 @@ Features:
 - ✅ Similar interface to React's official useState hook.
 - ✨ Server Side Render Support.
 
-# Examples
+# Installation
+
+npm:
+
+```sh
+npm install use-persisted-state-hook
+```
+
+yarn:
+
+```sh
+yarn add use-persisted-state-hook
+```
+
+# Usage
 
 ## Simple Example
 
