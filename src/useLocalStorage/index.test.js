@@ -72,7 +72,7 @@ test('persists the updated value to localStorage', () => {
   )
 })
 
-test('updates the value if the initial state changes', () => {
+test.only('updates the value if the initial state changes', () => {
   let initialValue = 'value'
   const { rerender, result } = renderHook(() =>
     useLocalStorageState('key', initialValue)
@@ -144,18 +144,18 @@ test('updates the value in localStorage if the initial state shape changes', () 
 })
 
 //test('updates the value in localStorage if the initial state changes from a function to another function', () => {
-  //let initialValue = { name: 'giovanni' }
-  //const { rerender } = renderHook(() =>
-    //useLocalStorageState('key', () => 'value')
-  //)
+//let initialValue = { name: 'giovanni' }
+//const { rerender } = renderHook(() =>
+//useLocalStorageState('key', () => 'value')
+//)
 
-  //initialValue = () => ('newValue')
-  //rerender()
+//initialValue = () => ('newValue')
+//rerender()
 
-  //expect(localStorage.setItem).toHaveBeenLastCalledWith(
-    //expect.anything(),
-    //JSON.stringify('newValue')
-  //)
+//expect(localStorage.setItem).toHaveBeenLastCalledWith(
+//expect.anything(),
+//JSON.stringify('newValue')
+//)
 //})
 
 test('when the initial value is a function it returns its value the first time is called', () => {

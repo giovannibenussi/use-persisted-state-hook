@@ -22,8 +22,12 @@ const setItem = (key, value) => {
 
 const useLocalStorageState = (keyName, initialValue) => {
   const hashKey = `${PREFIX}__initial_value_hash__${keyName}`
+  const valueKey = `${PREFIX}__value__${keyName}`
   const [hasSetState, setHasSetState] = useState(false)
-  const [state, setState] = useState()
+  const [state, setState] = useState(
+    (typeof window !== 'undefined' && getItem(valueKey)) ||
+      (initialValue instanceof Function ? initialValue() : initialValue)
+  )
 
   const initialValueHash =
     initialValue === undefined ? undefined : hash(initialValue)
@@ -34,8 +38,6 @@ const useLocalStorageState = (keyName, initialValue) => {
   }, [hashKey, initialValueHash])
 
   useEffect(() => {
-    const valueKey = `${PREFIX}__value__${keyName}`
-
     if (hasSetState) {
       setItem(valueKey, state)
     } else {

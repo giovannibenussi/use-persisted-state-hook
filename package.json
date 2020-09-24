@@ -1,6 +1,6 @@
 {
   "name": "use-persisted-state-hook",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "useLocalStorageState hook",
   "source": "src/index.js",
   "main": "dist/index.js",
