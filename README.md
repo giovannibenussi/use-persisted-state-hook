@@ -69,7 +69,7 @@ function Settings() {
     { title: 'Data Saving 2', name: 'data_saving', enabled: true },
   ])
 
-  const onClick = (e) => {
+  const onChange = (e) => {
     setOptions(
       options.map((option) =>
         option.name === e.target.name
@@ -87,7 +87,7 @@ function Settings() {
             type="checkbox"
             name={option.name}
             checked={option.enabled}
-            onClick={onClick}
+            onChange={onChange}
           />{' '}
           {option.title}
         </label>
