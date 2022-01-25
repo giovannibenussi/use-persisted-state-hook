@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import hash from 'object-hash'
+import md5 from 'blueimp-md5'
+
+const hash = (object) => md5(JSON.stringify(object))
 
 const PREFIX = '__use_local_storage_state_hook'
 
-const getItem = key => {
+const getItem = (key) => {
   try {
     const value = window.localStorage.getItem(key)
     if (value) {

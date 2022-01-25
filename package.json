@@ -35,7 +35,7 @@
     "react": "<=16.8.0"
   },
   "dependencies": {
-    "object-hash": "^2.0.3"
+    "blueimp-md5": "^2.19.0"
   },
   "eslintConfig": {
     "env": {
