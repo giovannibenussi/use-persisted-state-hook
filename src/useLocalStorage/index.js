@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import md5 from 'blueimp-md5'
 
-const hash = (object) => md5(JSON.stringify(object))
+export const hash = (object) => md5(JSON.stringify(object))
 
 const PREFIX = '__use_local_storage_state_hook'
 
