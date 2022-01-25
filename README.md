@@ -28,11 +28,13 @@ yarn add use-persisted-state-hook
 
 # Detect Changes in Initial State
 
-use-persisted-state-hook is the only hook that handles changes in initial state gracefully. Imagine you have the following piece of code:
+`use-persisted-state-hook` is the only library that handles changes in initial state gracefully. Leet's imagine that you have a hook called `useLocalStorage` like the one provided [here](https://usehooks.com/useLocalStorage/). It has the same API that [useState](https://reactjs.org/docs/hooks-reference.html#usestate) and looks like this:
 
 ```jsx
 function Greet() {
-  const [visits, setVisits] = usePersistedState('visits', 0)
+  const [visits, setVisits] = useLocalStorage('visits', 0)
+
+  // Logic to update visits...
 
   return (
     <div>Visits count is {visits}</div>
@@ -40,11 +42,13 @@ function Greet() {
 }
 ```
 
-Now, imagine you want to update the state to store more information:
+Now, imagine that you want to update the initial state to it stores more information:
 
 ```jsx
 function Greet() {
-  const [visits, setVisits] = usePersistedState('visits', { today: 0, total: 0 }))
+  const [visits, setVisits] = useLocalStorage('visits', { today: 0, total: 0 }))
+
+  // Logic to update visits...
 
   return (
     <div>
@@ -55,14 +59,13 @@ function Greet() {
 }
 ```
 
-The code above works if you use any library available out there to persist
-`localStorage` state. However, there's a pitfall. Imagine there's a user that
+The code above works, however, there's a pitfall. A user that
 loaded your app after you released the first version, so the value it has stored
-for `visits` is `0`. When they load your app again with their new logic, they'll
+for `visits` is `0` (or `1`, or `5`, or any integer). When they load your app again with the new logic, they'll
 see "Today's count is " and "Total count is ".
 
 `usePersistedState` is the only library that handles this case gracefully by
-storing a memory efficient identifier (a hash) that identified uniquely the
+storing an identifier that identifies uniquely the
 initial state so, whenever it changes, the state it's going to be reset and
 you'd never have to think about this issue in the first place ✨
 
