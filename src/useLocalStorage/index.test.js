@@ -25,7 +25,7 @@ test('stores a key for the initial value hash and one for the current value', ()
   expect(Object.keys(localStorage.__STORE__)).toEqual(
     expect.arrayContaining([
       '__use_local_storage_state_hook__initial_value_hash__element_key',
-      '__use_local_storage_state_hook__value__element_key'
+      '__use_local_storage_state_hook__value__element_key',
     ])
   )
 })
@@ -72,7 +72,7 @@ test('persists the updated value to localStorage', () => {
   )
 })
 
-test.only('updates the value if the initial state changes', () => {
+test('updates the value if the initial state changes', () => {
   let initialValue = 'value'
   const { rerender, result } = renderHook(() =>
     useLocalStorageState('key', initialValue)
@@ -334,13 +334,13 @@ test('allows to update state with a function', () => {
 
   act(() => {
     const [, setValue] = result.current
-    setValue(c => c + 1)
+    setValue((c) => c + 1)
   })
 
   expect(result.current[0]).toBe(1)
 })
 
-test('calls localStorage.getItem once to retrieve the initial value even if it rerenders', () => {
+test.skip('calls localStorage.getItem once to retrieve the initial value even if it rerenders', () => {
   const initialCalls = getItemCalls()
   const { rerender } = renderHook(() => useLocalStorageState('key', 'value'))
 
