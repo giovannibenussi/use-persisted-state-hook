@@ -1,6 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import useLocalStorageState from '.'
-import hash from 'object-hash'
+import useLocalStorageState, { hash } from '.'
 
 beforeEach(() => {
   localStorage.clear()
