@@ -3,7 +3,7 @@
 </p>
 
 <p align="center" width="100%">
-  [![npm version](https://badge.fury.io/js/use-persisted-state-hook.svg)](https://badge.fury.io/js/use-persisted-state-hook)
+  <a href="https://badge.fury.io/js/use-persisted-state-hook"><img src="https://badge.fury.io/js/use-persisted-state-hook.svg" alt="npm version" height="18"></a>
 </p>
 
 **Lightweight, resilient persisted useState.**
