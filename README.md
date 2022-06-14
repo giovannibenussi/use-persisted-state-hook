@@ -2,6 +2,8 @@
   <img src="https://raw.githubusercontent.com/giovannibenussi/use-persisted-state-hook/master/usePersistedState.svg">
 </p>
 
+[![npm version](https://badge.fury.io/js/use-persisted-state-hook.svg)](https://badge.fury.io/js/use-persisted-state-hook)
+
 **Lightweight, resilient persisted useState.**
 
 Features:
