@@ -32,7 +32,7 @@
     "react-test-renderer": "^16.9.0"
   },
   "peerDependencies": {
-    "react": "<=16.8.0"
+    "react": ">=16.8.0"
   },
   "dependencies": {
     "blueimp-md5": "^2.19.0"
