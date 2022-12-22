@@ -63,5 +63,8 @@
         "version": "detect"
       }
     }
+  },
+  "directories": {
+    "dist": "dist"
   }
 }
