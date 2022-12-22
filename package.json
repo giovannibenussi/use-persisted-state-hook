@@ -1,6 +1,6 @@
 {
   "name": "use-persisted-state-hook",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Resilient state that persist across browser's sessions 📦",
   "source": "src/index.js",
   "main": "dist/index.js",
