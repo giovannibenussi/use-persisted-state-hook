@@ -63,5 +63,8 @@
         "version": "detect"
       }
     }
-  }
+  },
+  "files": [
+    "dist/*"
+  ]
 }
